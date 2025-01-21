@@ -16,16 +16,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         #openModalButton {
-            position: fixed; /* 버튼을 화면 고정 */
-            top: 20px; /* 상단에서 20px 떨어짐 */
-            right: 20px; /* 오른쪽에서 20px 떨어짐 */
-            z-index: 1050; /* 모달보다 위에 위치하도록 설정 */
+            position: fixed;
+            top: 20px;
+            right: 20px;
         }
     </style>
 </head>
 <body>
 <!-- 모달 오픈 버튼 -->
-<button class="btn btn-primary" id="openModalButton" data-bs-toggle="offcanvas" data-bs-target="#insertModal" aria-controls="insertModal">
+<button class="btn btn-primary" id="openModalButton" data-bs-toggle="offcanvas" data-bs-target="#insertModal"
+        aria-controls="insertModal">
     학생 정보 입력
 </button>
 
@@ -36,7 +36,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <form action="${root}insert_proc" method="post">
+        <form id="studentForm" action="${root}insert_proc" method="post">
             <div class="mb-3">
                 <label for="name" class="form-label">이름</label>
                 <input type="text" class="form-control" id="name" name="name">
@@ -54,12 +54,51 @@
                 <input type="text" class="form-control" id="major" name="major">
             </div>
             <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary me-2">저장</button>
+                <button type="button" class="btn btn-primary me-2" onclick="validateForm()">저장</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="offcanvas">취소</button>
             </div>
         </form>
     </div>
 </div>
+
+<!-- 경고 모달 -->
+<div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="alertModalLabel">입력 오류</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                모든 필드를 입력해주세요.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function validateForm() {
+        const form = document.getElementById('studentForm');
+        const inputs = form.querySelectorAll('input');
+        let isValid = true;
+
+        inputs.forEach(input => {
+            if (input.value.trim() === '') {
+                isValid = false;
+            }
+        });
+
+        if (!isValid) {
+            const alertModal = new bootstrap.Modal(document.getElementById('alertModal'));
+            alertModal.show();
+        } else {
+            form.submit();
+        }
+    }
+</script>
+
 </body>
 </html>
-

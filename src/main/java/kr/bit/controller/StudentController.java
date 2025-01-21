@@ -4,9 +4,13 @@ import kr.bit.bean.Student;
 import kr.bit.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/")
@@ -16,8 +20,13 @@ public class StudentController {
     private StudentService studentService;
 
     @PostMapping("insert_proc")
-    public String insert_proc(@ModelAttribute("insertProcBean")Student insertProcBean) {
-        // 유효성 검사는 일단 기능 완성부터 하고 추가할게요~
+    public String insert_proc(@Valid @ModelAttribute("insertProcBean") Student insertProcBean, BindingResult bindingResult, Model model) {
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("insertProcBean", insertProcBean);
+            return "redirect:/index";
+        }
+
         studentService.insertStudent(insertProcBean);
         return "redirect:/index";
     }
