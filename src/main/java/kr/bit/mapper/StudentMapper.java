@@ -16,6 +16,6 @@ public interface StudentMapper {
     @Select("select * from student_info where stu_id=#{stu_id}")
     public Student getStudent(int stu_id);
 
-    @Insert("insert into student_info values(null, #{name}, #{live}, #{school}, #{major})")
+    @Insert("insert into student_info values(null, #{stu_name}, #{stu_live}, #{stu_school}, #{stu_major})")
     void insertStudent(Student insertProcBean);
 }

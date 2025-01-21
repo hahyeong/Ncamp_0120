@@ -116,20 +116,20 @@
     <div class="offcanvas-body">
         <form id="studentForm" action="${root}insert_proc" method="post">
             <div class="mb-3">
-                <label for="name" class="form-label">이름</label>
-                <input type="text" class="form-control" id="name" name="name">
+                <label for="stu_name" class="form-label">이름</label>
+                <input type="text" class="form-control" id="stu_name" name="stu_name">
             </div>
             <div class="mb-3">
-                <label for="live" class="form-label">거주 지역</label>
-                <input type="text" class="form-control" id="live" name="live">
+                <label for="stu_live" class="form-label">거주 지역</label>
+                <input type="text" class="form-control" id="stu_live" name="stu_live">
             </div>
             <div class="mb-3">
-                <label for="school" class="form-label">학교</label>
-                <input type="text" class="form-control" id="school" name="school">
+                <label for="stu_school" class="form-label">학교</label>
+                <input type="text" class="form-control" id="stu_school" name="stu_school">
             </div>
             <div class="mb-3">
-                <label for="major" class="form-label">전공</label>
-                <input type="text" class="form-control" id="major" name="major">
+                <label for="stu_major" class="form-label">전공</label>
+                <input type="text" class="form-control" id="stu_major" name="stu_major">
             </div>
             <div class="d-flex justify-content-end">
                 <button type="button" class="btn btn-primary me-2" onclick="validateForm()">저장</button>
