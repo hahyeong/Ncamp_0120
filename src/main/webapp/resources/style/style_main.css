@@ -1,0 +1,30 @@
+.slide-modal {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 400px;
+    height: 100%;
+    background: white;
+    transition: right 0.3s ease-in-out;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+    z-index: 1060;
+}
+
+.slide-modal.show {
+    right: 0;
+}
+
+.search-results {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.user-item {
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.user-item:hover {
+    background-color: #f8f9fa;
+}

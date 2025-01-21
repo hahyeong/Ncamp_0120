@@ -1,17 +1,27 @@
 package kr.bit.service;
 
 import kr.bit.bean.Student;
-import kr.bit.mapper.StudentMapper;
+import kr.bit.dao.StudentDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class StudentService {
 
     @Autowired
-    private StudentMapper studentMapper;
+    private StudentDao studentDao;
+
+    public List<Student> getNames(String stu_name) {
+        return studentDao.getNames(stu_name);
+    }
+
+    public Student getStudent(int stu_id) {
+        return studentDao.getStudent(stu_id);
+    }
 
     public void insertStudent(Student student) {
-        studentMapper.insertStudent(student);
+        studentDao.insertStudent(student);
     }
 }
