@@ -3,6 +3,7 @@ package kr.bit.config;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -15,8 +16,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("kr.bit.controller")
+@ComponentScan(basePackages = {"kr.bit.controller", "kr.bit.dao", "kr.bit.service"})
 @PropertySource("/WEB-INF/properties/db.properties")
+@MapperScan("kr.bit.mapper")  // Mapper 인터페이스가 위치한 패키지 경로
 public class ServletAppContext implements WebMvcConfigurer {
 
     @Value("${db.classname}")
