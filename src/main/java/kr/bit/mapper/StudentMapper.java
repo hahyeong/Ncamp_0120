@@ -1,9 +1,7 @@
 package kr.bit.mapper;
 
 import kr.bit.bean.Student;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -18,4 +16,18 @@ public interface StudentMapper {
 
     @Insert("insert into student_info values(null, #{stu_name}, #{stu_live}, #{stu_school}, #{stu_major})")
     void insertStudent(Student insertProcBean);
+
+    @Select("select * from student_info where stu_id=#{stu_id}")
+    Student getStudentInfoById(int stu_id);
+
+
+    @Update("update student_info set stu_name=#{stu_name}, stu_live=#{stu_live}, stu_school=#{stu_school}, stu_major=#{stu_major} where stu_id=#{stu_id}")
+    void updateUser(Student studentBean);
+
+    @Delete("delete from student_info where stu_id=#{stu_id}")
+    void deleteUser(int stu_id);
+
+    @Delete("delete from student_name where stu_id=#{stu_id}")
+    void delUser(int stu_id);
+
 }

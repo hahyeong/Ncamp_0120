@@ -49,4 +49,26 @@ public class StudentController {
         studentService.insertStudent(insertProcBean);
         return "redirect:/index";
     }
+
+    @GetMapping("/update")
+    public String updateUser(@RequestParam("stu_id") int stu_id, Model model) {
+
+        Student student = studentService.getStudentInfoById(stu_id);
+
+        model.addAttribute("studentInfo", student);
+        return "index";
+    }
+
+    @PostMapping("/update")
+    public String updateUser(@ModelAttribute Student student,@RequestParam("stu_id") int stu_id, Model model) {
+        studentService.updateUser(student);
+        return "redirect:/index";
+    }
+
+    @GetMapping("/delete")
+    public String deleteUser(@RequestParam("stu_id") int stu_id){
+        studentService.delUser(stu_id);
+        studentService.deleteUser(stu_id);
+        return "redirect:/index";
+    }
 }

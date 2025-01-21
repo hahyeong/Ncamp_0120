@@ -24,4 +24,21 @@ public class StudentDao {
     public void insertStudent(Student student) {
         studentMapper.insertStudent(student);
     }
+
+    public Student getStudentInfoById(int stu_id) {
+        return studentMapper.getStudentInfoById(stu_id);
+    }
+
+
+    public void updateUser(Student studentBean) {
+        studentMapper.updateUser(studentBean);
+    }
+
+    public void deleteUser(int stu_id) {
+        studentMapper.deleteUser(stu_id);
+    }
+
+    public void delUser(int stu_id) {
+        studentMapper.delUser(stu_id);
+    }
 }

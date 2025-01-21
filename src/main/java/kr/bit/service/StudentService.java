@@ -24,4 +24,20 @@ public class StudentService {
     public void insertStudent(Student student) {
         studentDao.insertStudent(student);
     }
+
+    public Student getStudentInfoById(int stu_id) {
+        return studentDao.getStudentInfoById(stu_id);
+    }
+
+    public void updateUser(Student studentBean) {
+        studentDao.updateUser(studentBean);
+    }
+
+    public void deleteUser(int stu_id) {
+        studentDao.deleteUser(stu_id);
+    }
+
+    public void delUser(int stu_id) {
+        studentDao.delUser(stu_id);
+    }
 }

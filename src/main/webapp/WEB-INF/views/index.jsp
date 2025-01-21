@@ -156,6 +156,61 @@
         </div>
     </div>
 </div>
+<div class="container" style="margin-top: 100px">
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <!-- 버튼으로 모달 띄우기 -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal">
+                정보 수정
+            </button>
+        </div>
+    </div>
+</div>
+
+<c:if test="${not empty studentInfo}">
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateModalLabel">정보 수정</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form:form action="${root}update" method="post" modelAttribute="studentInfo">
+                        <form:hidden path="stu_id"/>
+                        <div class="form-group">
+                            <form:label path="stu_name">이름</form:label>
+                            <form:input path="stu_name" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <form:label path="stu_live">주소</form:label>
+                            <form:input path="stu_live" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <form:label path="stu_school">학교</form:label>
+                            <form:input path="stu_school" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <form:label path="stu_major">전공</form:label>
+                            <form:textarea path="stu_major" class="form-control"></form:textarea>
+                        </div>
+                        <div class="form-group text-right">
+                            <button type="submit" class="btn btn-primary">수정완료</button>
+                        </div>
+                    </form:form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#updateModal').modal('show');
+        });
+    </script>
+</c:if>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -242,6 +297,10 @@
                     "</div>" +
                     "<div class='mb-3'>" +
                     "<strong>거주지:</strong> " + student.stu_live +
+                    "</div>"+
+                    "<div>" +
+                    "<a href='" + ${root} + "update?stu_id=" + student.stu_id + "' class='btn btn-info'>수정</a> " +
+                    "<a href='" + ${root} + "delete?stu_id=" + student.stu_id + "' class='btn btn-danger'>삭제</a>" +
                     "</div>";
 
                 // 모달 열기
@@ -285,5 +344,7 @@
         }
     }
 </script>
+
+
 </body>
 </html>
