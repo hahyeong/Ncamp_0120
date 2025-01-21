@@ -47,6 +47,7 @@ public class StudentController {
         }
 
         studentService.insertStudent(insertProcBean);
+//        studentService.insertStudentName(insertProcBean);
         return "redirect:/index";
     }
 

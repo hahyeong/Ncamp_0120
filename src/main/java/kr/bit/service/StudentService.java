@@ -25,6 +25,10 @@ public class StudentService {
         studentDao.insertStudent(student);
     }
 
+    public void insertStudentName(Student student) {
+        studentDao.insertStudentName(student);
+    }
+
     public Student getStudentInfoById(int stu_id) {
         return studentDao.getStudentInfoById(stu_id);
     }

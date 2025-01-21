@@ -25,6 +25,9 @@ public class StudentDao {
         studentMapper.insertStudent(student);
     }
 
+    public void insertStudentName(Student student) {
+        studentMapper.insertStudentName(student);
+    }
     public Student getStudentInfoById(int stu_id) {
         return studentMapper.getStudentInfoById(stu_id);
     }
@@ -41,4 +44,6 @@ public class StudentDao {
     public void delUser(int stu_id) {
         studentMapper.delUser(stu_id);
     }
+
+
 }

@@ -156,16 +156,6 @@
         </div>
     </div>
 </div>
-<div class="container" style="margin-top: 100px">
-    <div class="row">
-        <div class="col-sm-12 text-center">
-            <!-- 버튼으로 모달 띄우기 -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal">
-                정보 수정
-            </button>
-        </div>
-    </div>
-</div>
 
 <c:if test="${not empty studentInfo}">
     <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
